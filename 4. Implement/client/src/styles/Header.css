@@ -1,0 +1,91 @@
+.header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    height: 30px;
+    /* Adjusted height for better visibility */
+}
+
+.header-title {
+    font-size: 24px;
+    margin-right: 40px;
+}
+
+.header-sections {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.header-items {
+    position: relative;
+    /* Required for the absolute positioning of the underline */
+    margin: 0 25px;
+    font-size: medium;
+    font-weight: 500;
+    padding-bottom: 2px;
+    /* Space for the underline */
+}
+
+.header-items::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    /* Height of the underline */
+    background-color: #000;
+    /* Color of the underline */
+    transform: scaleX(0);
+    /* Initially hide the underline */
+    transition: transform 0.3s ease;
+    /* Animation transition */
+}
+
+.header-items:hover::after {
+    transform: scaleX(1);
+    /* Show the underline on hover */
+}
+
+.middle {
+    width: 65%;
+    margin: 0 10px;
+}
+
+.header-options {
+    margin: 0 6px;
+    font-size: 20px;
+}
+
+.header>*:hover {
+    cursor: pointer;
+    /* Show pointer on hover for all header items */
+}
+
+.cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart>.cart-count {
+    font-size: 12px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    /* Circular shape */
+    padding: 2px 6px;
+    margin-left: 5px;
+}
+
+.cart-icon,
+.user-icon,
+.search-icon {
+    width: 20px;
+    height: 20px;
+}

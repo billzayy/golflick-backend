@@ -1,0 +1,110 @@
+.pic-body{
+    position: relative;
+    width: 100%;
+    background-image: url('../../assets/HomePage-background.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    height: 90vh;
+}
+
+.background-text{
+    color: white;
+    position: absolute;
+    top : 25%;
+    left: 7%;
+    right: 12%;
+    font-size: 20px;
+    width: auto;
+}
+
+.background-text > p {
+    width: 50%;
+}
+
+.background-title{
+    font-size: 50px;
+    line-height: 1.25;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.background-lower-text{
+    margin: 0;
+    font-size: 15.5px;
+}
+
+.background-image{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.homepage-btn {
+    margin-top: 20px;
+    background-color: #38CB89;
+    padding: 10px;
+    border: 0px;
+    height: 56px;
+    font-size: 18px;
+    width: 234px;
+    border-radius: 8px;
+}
+
+.homepage-btn:hover{
+    cursor: pointer;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
+.btn:active{
+    opacity: 0.5;
+}
+
+.suggest-offer{
+    background-color: #38CB89;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 3%;
+    font-size: 14px;
+    height: 4vh;
+}
+
+.suggest-offer > .suggest-content{
+    display: flex;
+    align-items: center;
+}
+
+.suggest-content > *{
+    margin: 2px 5px;
+}
+
+.suggest-content > img {
+    height: 20%;
+    margin: 0 2px;
+}
+
+.suggest-link{
+    display: flex;
+    align-items: center;
+    text-decoration: underline;
+}
+
+.suggest-link > * {
+    margin: 0 2px;
+}
+.suggest-offer {
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(0);
+}
+
+.suggest-offer.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+    /* Optional: adds a slight upward motion */
+}

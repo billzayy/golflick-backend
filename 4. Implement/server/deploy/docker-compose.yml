@@ -1,0 +1,53 @@
+# version: "3.8"
+services:
+  # backend:
+  #   image: coderbillzay/jio-health-linux
+  #   container_name: backend
+  #   restart: always
+  #   ports:
+  #     - "4879:4879"
+  #   networks:
+  #     - jiohealth
+  #   links:
+  #     - db
+  #   volumes:
+  #     - ../assets:/app/assets
+  
+  db:
+    image: postgres
+    container_name: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: golflick
+    volumes:
+      - ../deploy/postgresql:/var/lib/postgresql/data
+      # seeding scripts
+      - ../deploy/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - golflick
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    ports:
+      - "243:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: postgres
+    volumes:
+      - ../deploy/pgadmin:/var/lib/pgadmin
+    networks:
+      - golflick
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
+
+networks:
+  golflick:
+    driver: bridge
