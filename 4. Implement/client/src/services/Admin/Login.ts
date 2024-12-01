@@ -1,21 +1,21 @@
 import axios from "axios"
 import { NavigateFunction } from "react-router-dom";
-
-const api = `http://localhost:3000/api/v1`
+import { api } from "../../utils/constraints";
 
 const handleLogin = async (email: string, password: string, useNavigate: NavigateFunction) => { 
-
     try {
         const response = await axios.post(`${api}/auth/login`, {
             email, password, 
         }, {withCredentials: true});
 
-        if (response.status == 200) { 
+        if (response.status == 200) {
+            alert("Login Successful")
             useNavigate("/")
+        } else { 
+            alert(response.data)
         }
-
     } catch (error) {
-        console.log(error)
+        alert(error)
     }
 }
 

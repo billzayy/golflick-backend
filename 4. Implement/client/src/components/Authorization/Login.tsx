@@ -1,20 +1,33 @@
 import { useState } from "react";
 import handleLogin from "../../services/Admin/Login";
+import Logo from "../../assets/Logo.png"
 import { NavigateFunction } from "react-router-dom";
 
 interface Input { 
-    navigate: NavigateFunction
+    navigate: NavigateFunction,
+    setIsActive: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const LoginComponent: React.FC<Input> = ({navigate}) => { 
+interface otherSocial { 
+    name: string,
+    link?: string
+}
+
+const socialMedia: otherSocial[] = [
+    {name:"Facebook", link:""},
+    {name:"LinkedIn", link:""},
+    {name:"Google", link:""}
+]
+
+const LoginComponent: React.FC<Input> = ({navigate, setIsActive}) => { 
     const [emailValue, setEmailValue] = useState<string>('');
     const [passValue, setPassValue] = useState<string>('');
 
     return (
-        <div className="content w-1/2 bg-white p-8 pl-16 pr-12">
+        <div className="content w-1/2 p-8 pl-16 pr-12">
             <div className="flex logo pb-16 items-center">
-                <img src="" alt="a" />
-                <p className="text-green ml-4 text-3xl font-bold">Login</p>
+                <img src={Logo} alt="logo" className="size-8"/>
+                <p className="text-green ml-2 text-3xl font-bold">Login</p>
             </div>
             <div className="welcome">
                 <p className="text-login font-extrabold text-xl pr-20">Artificial Intelligence giving you travel recommendations</p>
@@ -48,16 +61,22 @@ const LoginComponent: React.FC<Input> = ({navigate}) => {
                 <div className="text-login underline hover:cursor-pointer active:text-red-500">Forgot password?</div>
             </div>
             <div className="buttons flex pt-4">
-                <button onClick={() => { handleLogin(emailValue, passValue, navigate)}} className="w-screen border border-white rounded-lg text-white bg-green p-2 hover:cursor-pointer hover:bg-white hover:text-green hover:border-green">Login</button>
-                <button className="w-screen border border-green text-green rounded-lg ml-4 p-2 hover:cursor-pointer hover:bg-green hover:text-white">Sign Up</button>
+                <button onClick={() => { handleLogin(emailValue, passValue, navigate)}} className="w-screen border border-white rounded-lg text-white bg-green p-2 hover:cursor-pointer hover:bg-white hover:text-green hover:border-green transition ease-linear delay-75">Login</button>
+                <button onClick={() => {setIsActive(true)}} className="w-screen border border-green text-green rounded-lg ml-4 p-2 hover:cursor-pointer hover:bg-green hover:text-white transition ease-linear delay-75">Sign Up</button>
             </div>
             <div className="other flex mt-12 text-sm text-green">
                 <p className="pl-0 px-2">Or, login with</p>
-                <p className="px-2 text-login font-bold">Facebook</p>
-                <p className="px-2 text-login font-bold">LinkedIn</p>
-                <p className="px-2 text-login font-bold">Google</p>
+                {socialMedia.map((item) => ( 
+                    <OtherLogin name={item.name} />
+                ))}
             </div>
         </div>
+    )
+}
+
+const OtherLogin: React.FC<otherSocial> = ({name}) => { 
+    return (
+        <p className="px-2 text-login font-bold hover:cursor-pointer">{name}</p>
     )
 }
 
