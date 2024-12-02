@@ -7,5 +7,5 @@ type User struct {
 	Email     string `json:"email"`
 	Password  string `json:"password"`
 	Avatar    string `json:"avatar"`
-	Roles     int    `json:"role"`
+	Role      int    `json:"role"`
 }

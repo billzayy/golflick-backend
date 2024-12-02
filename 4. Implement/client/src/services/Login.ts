@@ -2,10 +2,19 @@ import axios from "axios"
 import { NavigateFunction } from "react-router-dom";
 import { api } from "../utils/constraints";
 
-interface ApiResponse { 
+interface LoginResponse { 
     statusCode: number,
-    data: string,
+    data: DataResponse,
     message: string
+}
+
+interface DataResponse {
+    userID: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    avatar: string,
+    role: number
 }
 
 const handleLogin = async (email: string, password: string, useNavigate: NavigateFunction) => { 
@@ -13,15 +22,17 @@ const handleLogin = async (email: string, password: string, useNavigate: Navigat
         if (email == "") { alert("Email must not empty"); return }
         if (password == "") { alert("Password must not empty"); return}
 
-        const response = await axios.post<ApiResponse>(`${api}/auth/login`, {
+        const response = await axios.post<LoginResponse>(`${api}/auth/login`, {
             email, password, 
         }, { withCredentials: true });
-        
-        console.log(document.cookie)
 
         if (response.status == 200) {
-            // alert("Login Successful")
-            useNavigate("/")
+            if (response.data.data.role == 2) {
+                useNavigate("/admin")
+            } else { 
+                // alert("Login Successful")
+                useNavigate("/")
+            }
         } else {
             alert(response.data.data)
         }

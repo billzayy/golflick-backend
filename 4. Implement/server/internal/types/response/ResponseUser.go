@@ -6,4 +6,5 @@ type ResponseUser struct {
 	LastName  string `json:"lastName"`
 	Email     string `json:"email"`
 	Avatar    string `json:"avatar"`
+	Role      int    `json:"role"`
 }

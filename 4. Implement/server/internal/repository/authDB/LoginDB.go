@@ -39,7 +39,7 @@ func LoginDB(user request.Login) (response.ResponseUser, error) {
 	var temp types.User
 
 	for rows.Next() {
-		err := rows.Scan(&temp.UserId, &temp.FirstName, &temp.LastName, &temp.Email, &temp.Password, &temp.Avatar)
+		err := rows.Scan(&temp.UserId, &temp.FirstName, &temp.LastName, &temp.Email, &temp.Password, &temp.Avatar, &temp.Role)
 
 		if err != nil {
 			fmt.Println(err) // Error or missing destination arguments
@@ -57,6 +57,7 @@ func LoginDB(user request.Login) (response.ResponseUser, error) {
 		result.LastName = temp.LastName
 		result.Email = temp.Email
 		result.Avatar = temp.Avatar
+		result.Role = temp.Role
 	}
 	rows.Close()
 

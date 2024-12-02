@@ -8,10 +8,12 @@ const handleSignUp = async (firstName: string, lastName: string, email: string, 
         if (firstName == "") { alert("First Name must not empty"); return}
         if (lastName == "") { alert("Last Name must not empty"); return}
         if (email == "") { alert("Email must not empty"); return}
-        if (password == "") { alert("Password must not empty"); return}
+        if (password == "") { alert("Password must not empty"); return }
+        
+        const role: number = 1
 
         const response = await axios.post(`${api}/auth/sign-up`, {
-            firstName, lastName, email, password
+            firstName, lastName, email, password, role,
         }, {withCredentials: true});
 
         if (response.status == 201) {

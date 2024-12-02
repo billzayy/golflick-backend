@@ -44,8 +44,8 @@ func SignUpDB(register types.User) (int, error) {
 			return 0, err
 		}
 
-		query := fmt.Sprintf("INSERT INTO users(first_name, last_name, email, password, avatar) VALUES ('%s', '%s','%s','%s','%s')",
-			register.FirstName, register.LastName, register.Email, hashPassword, register.Avatar)
+		query := fmt.Sprintf("INSERT INTO users(first_name, last_name, email, password, avatar, role) VALUES ('%s', '%s','%s','%s','%s',%d)",
+			register.FirstName, register.LastName, register.Email, hashPassword, register.Avatar, register.Role)
 
 		_, err = db.Exec(query)
 

@@ -2,6 +2,9 @@ import { useState } from "react";
 import handleLogin from "../../services/Login";
 import Logo from "../../assets/Logo.png"
 import { NavigateFunction } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-regular-svg-icons"
+import { faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 
 interface Input { 
     navigate: NavigateFunction,
@@ -23,6 +26,8 @@ const LoginComponent: React.FC<Input> = ({navigate, setIsActive}) => {
     const [emailValue, setEmailValue] = useState<string>('');
     const [passValue, setPassValue] = useState<string>('');
 
+    const [showPassword, setShowPassword] = useState(false)
+
     return (
         <div className="content w-1/2 p-8 pl-16 pr-12">
             <div className="flex logo pb-16 items-center">
@@ -43,15 +48,18 @@ const LoginComponent: React.FC<Input> = ({navigate, setIsActive}) => {
                     placeholder="Type here..."
                 />
             </div>
-            <div className="passwordBox pt-4 text-login font-extrabold">
-            <p>Password</p>
+            <div className="passwordBox pt-4 text-login font-extrabold relative">
+                <p>Password</p>
                 <input
-                    type="text"
+                    type={showPassword?"text":"password"}
                     className="border border-inputBox w-full p-2 mt-2 rounded-lg font-light "
                     value={passValue}
                     onChange={(event) => {setPassValue(event.target.value)}}
                     placeholder="Type here..."
                 /> 
+                <button type="button" onClick={() => {setShowPassword(!showPassword);}} className="absolute right-3 bottom-1 top-14">
+                    { !showPassword? <FontAwesomeIcon icon={faEyeSlash} className="opacity-20"/> : <FontAwesomeIcon icon={faEye} className="opacity-100"/>}
+                </button>
             </div>
             <div className="option flex pt-4 justify-between text-sm">
                 <div className="text-login flex items-center">
