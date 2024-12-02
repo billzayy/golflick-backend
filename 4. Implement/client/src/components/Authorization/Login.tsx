@@ -1,5 +1,5 @@
 import { useState } from "react";
-import handleLogin from "../../services/Admin/Login";
+import handleLogin from "../../services/Login";
 import Logo from "../../assets/Logo.png"
 import { NavigateFunction } from "react-router-dom";
 
@@ -61,13 +61,13 @@ const LoginComponent: React.FC<Input> = ({navigate, setIsActive}) => {
                 <div className="text-login underline hover:cursor-pointer active:text-red-500">Forgot password?</div>
             </div>
             <div className="buttons flex pt-4">
-                <button onClick={() => { handleLogin(emailValue, passValue, navigate)}} className="w-screen border border-white rounded-lg text-white bg-green p-2 hover:cursor-pointer hover:bg-white hover:text-green hover:border-green transition ease-linear delay-75">Login</button>
+                <button onClick={() => {handleLogin(emailValue, passValue, navigate)}} className={`w-screen border border-white rounded-lg text-white bg-green p-2 hover:cursor-pointer hover:bg-white hover:text-green hover:border-green transition ease-linear delay-75`}>Login</button>
                 <button onClick={() => {setIsActive(true)}} className="w-screen border border-green text-green rounded-lg ml-4 p-2 hover:cursor-pointer hover:bg-green hover:text-white transition ease-linear delay-75">Sign Up</button>
             </div>
             <div className="other flex mt-12 text-sm text-green">
                 <p className="pl-0 px-2">Or, login with</p>
-                {socialMedia.map((item) => ( 
-                    <OtherLogin name={item.name} />
+                {socialMedia.map((item, index) => ( 
+                    <OtherLogin key={index} name={item.name} />
                 ))}
             </div>
         </div>

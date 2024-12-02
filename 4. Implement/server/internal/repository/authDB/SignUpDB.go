@@ -11,6 +11,22 @@ import (
 )
 
 func SignUpDB(register types.User) (int, error) {
+	if register.Email == "" {
+		return 0, errors.New("Email must not empty")
+	}
+
+	if register.FirstName == "" {
+		return 0, errors.New("First Name must not empty")
+	}
+
+	if register.LastName == "" {
+		return 0, errors.New("Last Name must not empty")
+	}
+
+	if register.Password == "" {
+		return 0, errors.New("Password must not empty")
+	}
+
 	db, err := repository.ConnectPostgres()
 
 	if err != nil {

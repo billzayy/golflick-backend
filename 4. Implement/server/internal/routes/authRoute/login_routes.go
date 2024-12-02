@@ -37,7 +37,13 @@ func LoginRoute(w http.ResponseWriter, r *http.Request) {
 
 	result, err := authdb.LoginDB(user)
 
-	if err != nil {
+	if err != nil && err.Error() == "account not found" {
+		handlers.Response(w, http.StatusNotFound, err.Error())
+		return
+	} else if err != nil && err.Error() == "incorrect password" || err != nil && err.Error() == "email is not empty" {
+		handlers.Response(w, http.StatusBadRequest, err.Error())
+		return
+	} else if err != nil {
 		handlers.Response(w, http.StatusInternalServerError, err.Error())
 		return
 	}

@@ -33,8 +33,11 @@ func GenerateTokenAndSetCookie(userId string, w http.ResponseWriter) (string, er
 	}
 
 	cookie := http.Cookie{
-		Name:  "jwt",
-		Value: tokenString,
+		Name:     "jwt",
+		Value:    tokenString,
+		HttpOnly: true,
+		Path:     "/",
+		SameSite: 3,
 	}
 
 	http.SetCookie(w, &cookie)

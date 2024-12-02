@@ -1,5 +1,5 @@
 import { useState } from "react"
-import handleSignUp from "../../services/Admin/Signup"
+import handleSignUp from "../../services/Signup"
 import Logo from "../../assets/Logo.png"
 import { NavigateFunction } from "react-router-dom"
 
@@ -9,10 +9,10 @@ interface input {
 }
 
 const SignUp: React.FC<input> = ({navigator, setIsActive}) => {
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [firstName, setFirstName] = useState<string>('')
+    const [lastName, setLastName] = useState<string>('')
+    const [email, setEmail] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
 
     return (
         <div className="signUp w-1/2 p-8">

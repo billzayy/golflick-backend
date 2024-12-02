@@ -1,4 +1,4 @@
-./deploy/postgresql
-./deploy/pgadmin/azurecredentialcache
-./deploy/pgadmin/sessions
-./deploy/pgadmin/pgadmin4.db
+/deploy/postgresql
+/deploy/pgadmin/azurecredentialcache
+/deploy/pgadmin/sessions
+/deploy/pgadmin/pgadmin4.db 
