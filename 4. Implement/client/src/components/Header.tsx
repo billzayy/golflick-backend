@@ -8,7 +8,7 @@ function Header() {
     const navigate = useNavigate();
 
     return (
-        <div className="header">
+        <div className="header sticky">
             <div className="header-title">Golflick</div>
 
             <div className="header-sections middle">

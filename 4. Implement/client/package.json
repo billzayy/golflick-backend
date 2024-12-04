@@ -14,8 +14,10 @@
     "@fortawesome/free-regular-svg-icons": "^6.7.0",
     "@fortawesome/free-solid-svg-icons": "^6.7.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "antd": "^5.22.3",
     "axios": "^1.7.8",
     "js-cookie": "^3.0.5",
+    "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
+    "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/react-star-ratings": "^2.3.3",

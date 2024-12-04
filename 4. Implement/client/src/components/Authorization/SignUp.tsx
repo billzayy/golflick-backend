@@ -58,7 +58,7 @@ const SignUp: React.FC<input> = ({navigator, setIsActive}) => {
                         placeholder="Type here..."
                     /> 
                 </div>
-                <div className="password mb-2 relative z-10">
+                <div className="password mb-2 relative z-20">
                     <p>Password</p>
                     <input
                         type={showPassword? 'text':'password'}

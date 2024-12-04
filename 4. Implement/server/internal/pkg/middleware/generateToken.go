@@ -35,7 +35,7 @@ func GenerateTokenAndSetCookie(userId string, w http.ResponseWriter) (string, er
 	cookie := http.Cookie{
 		Name:     "jwt",
 		Value:    tokenString,
-		HttpOnly: true,
+		HttpOnly: false, // If set true, the Front-End Js can not get the cookie
 		Path:     "/",
 		SameSite: 3,
 	}
