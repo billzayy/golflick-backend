@@ -27,7 +27,7 @@ CREATE TABLE Bank_Type(
 );
 
 CREATE TABLE Account(
-    account_id      uuid            gen_random_uuid()   NOT NULL    PRIMARY KEY,
+    account_id      uuid            DEFAULT         gen_random_uuid()   PRIMARY KEY,
     user_id         uuid            NOT NULL,
     bank_type_id    INTEGER         NOT NULL,
     account_number  VARCHAR(255)    NOT NULL,
@@ -106,7 +106,7 @@ CREATE TABLE Orders(
     order_id        SERIAL          NOT NULL    PRIMARY KEY,
     order_date      DATE            NOT NULL,
     order_status    INTEGER         NOT NULL,
-    total_price     DOUBLE          NOT NULL,
+    total_price     DOUBLE PRECISION         NOT NULL,
     shipping_method VARCHAR(255)    NOT NULL,
     user_id         uuid            NOT NULL,
     coupon_id       uuid            NULL,
