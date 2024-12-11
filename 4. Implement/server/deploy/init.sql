@@ -27,7 +27,7 @@ CREATE TABLE Bank_Type(
 );
 
 CREATE TABLE Account(
-    account_id      uuid            NOT NULL,
+    account_id      uuid            gen_random_uuid()   NOT NULL    PRIMARY KEY,
     user_id         uuid            NOT NULL,
     bank_type_id    INTEGER         NOT NULL,
     account_number  VARCHAR(255)    NOT NULL,
@@ -82,21 +82,19 @@ CREATE TABLE Review(
     product_id   uuid               NOT NULL,
     star         DOUBLE PRECISION   NOT NULL,
     comment      VARCHAR(255)       NOT NULL,
+    user_id      uuid               NOT NULL,
+    FOREIGN KEY (user_id)   REFERENCES Users(user_id),
     FOREIGN KEY (product_id) REFERENCES Product(product_id)
 );
 
 CREATE TABLE Wishlist(
     wishlist_id     SERIAL          NOT NULL    PRIMARY KEY,
     product_id      uuid            NOT NULL,
+    user_id         uuid            NOT NULL,
+    FOREIGN KEY(user_id) REFERENCES Users(user_id),
     FOREIGN KEY(product_id) REFERENCES Product(product_id)
 );
 
-CREATE TABLE Billing(
-    billing_id      uuid            NOT NULL    PRIMARY KEY,
-    billing_date    TIMESTAMP WITH TIME ZONE    NOT NULL,
-    billing_status  INTEGER         NOT NULL,
-    billing_price   DOUBLE PRECISION           NOT NULL
-);
 
 CREATE TABLE Coupon(
     coupon_id       uuid            NOT NULL    PRIMARY KEY,
@@ -105,19 +103,29 @@ CREATE TABLE Coupon(
 );
 
 CREATE TABLE Orders(
-    billing_id      uuid            NOT NULL,
+    order_id        SERIAL          NOT NULL    PRIMARY KEY,
+    order_date      DATE            NOT NULL,
+    order_status    INTEGER         NOT NULL,
+    total_price     DOUBLE          NOT NULL,
+    shipping_method VARCHAR(255)    NOT NULL,
+    user_id         uuid            NOT NULL,
+    coupon_id       uuid            NULL,
     product_id      uuid            NOT NULL,
-    coupon_id       uuid            NOT NULL,
-    FOREIGN KEY(billing_id) REFERENCES Billing(billing_id),
-    FOREIGN KEY(product_id) REFERENCES Product(product_id),
-    FOREIGN KEY(coupon_id) REFERENCES Coupon(coupon_id)
+    FOREIGN KEY(user_id) REFERENCES Users(user_id),
+    FOREIGN KEY(coupon_id) REFERENCES Coupon(coupon_id),
+    FOREIGN KEY(product_id) REFERENCES Product(product_id)
 );
 
 CREATE TABLE Carts(
+    cart_id         uuid            NOT NULL    PRIMARY KEY,
+    coupon_id       uuid            NOT NULL,
     product_id      uuid            NOT NULL,
     quantity        INTEGER         NOT NULL,
-    sub_total       DOUBLE PRECISION NOT NULL,
-    FOREIGN KEY(product_id) REFERENCES Product(product_id)
+    cart_summary    VARCHAR(255)    NOT NULL,
+    user_id         uuid            NOT NULL,
+    FOREIGN KEY(coupon_id) REFERENCES Coupon(coupon_id),
+    FOREIGN KEY(product_id) REFERENCES Product(product_id),
+    FOREIGN KEY(user_id) REFERENCES Users(user_id)
 );
 
 CREATE TABLE Pictures(

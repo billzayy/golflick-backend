@@ -40,12 +40,16 @@ const handleLogin = async (email: string, password: string, useNavigate: Navigat
             notification.error({
                 message: 'Error',
                 description: response.data.message || 'Login failed.',
+                showProgress: true,
+                pauseOnHover: false
             });
         }
     } catch (error) {
         notification.error({
             message: 'Error',
-            description:"An error occurred during login"
+            description: "An error occurred during login",
+            showProgress: true,
+            pauseOnHover: false
         })
     }
 }
