@@ -27,13 +27,17 @@ func UpdateProductDB(input types.Product) error {
 
 	var condition string
 
-	if input.ReviewId == 0 {
-		condition = fmt.Sprintf("WHERE product_id = '%v'", input.Id)
-		query += condition
-	} else {
-		condition = fmt.Sprintf(", review_id = %d WHERE product_id = '%v'", input.ReviewId, input.Id)
-		query += condition
-	}
+	/* If review is existed, using this logic code */
+	// if input.ReviewId == 0 {
+	// 	condition = fmt.Sprintf("WHERE product_id = '%v'", input.Id)
+	// 	query += condition
+	// } else {
+	// 	condition = fmt.Sprintf(", review_id = %d WHERE product_id = '%v'", input.ReviewId, input.Id)
+	// 	query += condition
+	// }
+
+	condition = fmt.Sprintf("WHERE product_id = '%v'", input.Id)
+	query += condition
 
 	result, err := db.Exec(query)
 

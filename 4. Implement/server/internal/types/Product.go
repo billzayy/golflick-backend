@@ -11,5 +11,4 @@ type Product struct {
 	Price            float64   `json:"price" db:"product_price"`
 	Sales            int       `json:"sales" db:"product_sale"`
 	CategoryId       uuid.UUID `json:"categoryId" db:"category_id"`
-	ReviewId         int       `json:"reviewId" db:"review_id"`
 }
