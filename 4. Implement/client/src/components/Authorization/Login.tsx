@@ -30,7 +30,7 @@ const LoginComponent: React.FC<Input> = ({navigate, setIsActive}) => {
 
     return (
         <div className="content w-1/2 p-8 pl-16 pr-12">
-            <div className="flex logo pb-16 items-center">
+            <div className="flex logo pb-8 items-center">
                 <img src={Logo} alt="logo" className="size-8"/>
                 <p className="text-green ml-2 text-3xl font-bold">Login</p>
             </div>

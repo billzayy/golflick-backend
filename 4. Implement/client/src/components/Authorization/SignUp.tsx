@@ -20,7 +20,7 @@ const SignUp: React.FC<input> = ({navigator, setIsActive}) => {
     const [showPassword, setShowPassword] = useState(false)
     return (
         <div className="signUp w-1/2 p-8">
-            <div className="logo flex items-center mb-8">
+            <div className="logo flex items-center mb-6">
                 <img src={Logo} alt="logo" className="size-8"/>
                 <p className="text-green ml-2 text-3xl font-bold">Sign Up</p>
             </div>
@@ -72,7 +72,7 @@ const SignUp: React.FC<input> = ({navigator, setIsActive}) => {
                     </button>
                 </div>
             </div>
-            <button onClick={() => {handleSignUp(firstName, lastName, email, password, navigator)}} className="w-full mt-5 mb-3 border border-white rounded-lg text-white bg-green p-2 hover:cursor-pointer hover:opacity-60 hover:border-green">Sign Up</button>
+            <button onClick={() => {handleSignUp(firstName, lastName, email, password, navigator)}} className="w-full mt-4 mb-3 border border-white rounded-lg text-white bg-green p-2 hover:cursor-pointer hover:opacity-60 hover:border-green">Sign Up</button>
             <div className="already flex mt-1 justify-center">
                 <p className="mr-2">Already have account?</p>
                 <p onClick={() => { setIsActive(false)} } className="text-blue-500 hover:cursor-pointer">LogIn</p>
