@@ -1,4 +1,4 @@
-import SideBar from "../../components/Admin/SideBar/SideBar"
+import SideBar from "../../components/Admin/SideBar"
 
 const Admin: React.FC<{}> = ({}) => { 
     return (
