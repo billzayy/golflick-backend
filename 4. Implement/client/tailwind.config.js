@@ -24,13 +24,15 @@ export default {
         "totalSaleBg": "#4AD991",
         "totalPendingBg": "#FF9066",
         "monthChartBg": "#323D4E",
-        "menuBg" : "#4880FF"
+        "menuBg": "#4880FF",
+        "btnBg": "#4B5668"
         // "loginBtn": '#029664'
       },
       borderColor: {
         "inputBox": '#B8D6BF',
         "statisticBorder": "#313D4F",
-        "monthChartBorder":"rgba(207, 207, 207, 0.1142)"
+        "monthChartBorder": "rgba(207, 207, 207, 0.1142)",
+        "productBorder": "#313D4F"
       }
     },
   },

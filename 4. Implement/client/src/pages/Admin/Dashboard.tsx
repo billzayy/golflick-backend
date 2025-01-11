@@ -9,12 +9,12 @@ const Dashboard: React.FC<{}> = ({}) => {
     const [isClosedMenu, setIsClosedMenu] = useState(false)
 
     return (
-        <div className="dashboard-admin bg-adminBg w-full h-fit flex">
+        <div className="dashboard-admin bg-adminBg w-full flex">
             <SideBar closed={isClosedMenu} tabIndex={0}/>
             <div className="w-full">
                 <MenuBar state={isClosedMenu} setState={setIsClosedMenu} />
                 <div className="main">
-                    <div className="text-white text-2xl mt-6 ml-5">Dashboard</div>
+                    <div className="text-white text-2xl mt-6 ml-5 font-bold">Dashboard</div>
                     <div className="flex ml-5">
                         {demo.map((item, index) => (
                             <Statistics key={index} title={item.title} logo={item.logo} color={item.color} input={item.input}/>
