@@ -7,7 +7,7 @@ import Logo from "../../assets/Logo.png"
 
 const SideBar: React.FC<{ closed: boolean, tabIndex: number }> = ({ closed, tabIndex}) => {
     return (
-        <div className={`${closed? "hidden" : "grid"} bg-adminTabs text-white w-52 content-between p-1`}>
+        <div className={`${closed? "hidden" : "grid"} bg-adminTabs text-white w-full max-w-[25vh] content-between p-1`}>
             <div className="tabs h-max">
                 <div className="flex justify-center items-center h-20">
                     <img src={Logo} alt="" className="size-16" />

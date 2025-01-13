@@ -67,10 +67,12 @@ const Product: React.FC = () => {
                         </div>
                     </div>
                     {showAddProduct && (
-                        <div
-                            ref={addProductRef}
-                            className="absolute flex justify-center items-center w-1/2 inset-0 backdrop-blur-sm border border-red-500">
-                            <AddProduct />
+                        <div className="absolute flex justify-center items-center w-full inset-0 backdrop-blur-sm border border-blue-500">
+                            <div
+                                ref={addProductRef}
+                                className="w-full max-w-[100vh] max-h-[100vh]">
+                                <AddProduct />
+                            </div> 
                         </div>
                     )}
                 </div>
