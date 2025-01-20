@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react"
 import SideBar from "../../components/Admin/SideBar"
 import MenuBar from "../../components/Admin/MenuBar"
-import ProductCard from "../../components/Admin/ProductCard"
-import getProduct from "../../services/Admin/Product"
+import ProductCard from "../../components/Admin/Product/ProductCard"
+import getProduct from "../../services/Product/GetProduct"
 import { IProduct } from "../../types/IProduct"
-import ProductTable from "../../components/Admin/ProductTable"
+import ProductTable from "../../components/Admin/Product/ProductTable"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGrip, faList } from "@fortawesome/free-solid-svg-icons"
-import AddProduct from "./AddProduct"
+import AddProduct from "../../components/Admin/Product/AddProduct"
 
 const Product: React.FC = () => {
     const [isClosedMenu, setIsClosedMenu] = useState(false)
@@ -19,7 +19,7 @@ const Product: React.FC = () => {
     useEffect(() => { 
         const fetchData = async () => { 
             try {
-                const result = await getProduct(0, 1)
+                const result = await getProduct(0, 20)
 
                 if (result != undefined) { 
                     setData(result)
@@ -53,7 +53,7 @@ const Product: React.FC = () => {
             <div className="w-full">
                 <MenuBar state={isClosedMenu} setState={setIsClosedMenu} />
                 <div className="main flex justify-between items-center">
-                    <div className="text-white text-2xl mt-6 ml-5 font-bold">Product</div>
+                    <div className="text-white text-2xl mt-2 ml-5 font-bold">Product</div>
                     <div className="grid justify-center">
                         <div
                             className="text-white text-md mt-6 mr-10 bg-slate-700 shadow-md px-3.5 py-1 rounded-lg hover:cursor-pointer hover:bg-slate-400"
@@ -67,10 +67,10 @@ const Product: React.FC = () => {
                         </div>
                     </div>
                     {showAddProduct && (
-                        <div className="absolute flex justify-center items-center w-full inset-0 backdrop-blur-sm border border-blue-500">
+                        <div className="absolute flex justify-center items-center w-full inset-0 backdrop-blur-sm">
                             <div
                                 ref={addProductRef}
-                                className="w-full max-w-[100vh] max-h-[100vh]">
+                                className="w-full max-w-[120vh] max-h-[100vh]">
                                 <AddProduct />
                             </div> 
                         </div>
@@ -81,7 +81,7 @@ const Product: React.FC = () => {
                         <ProductCard key={index} item={item}/>
                     ))}
                 </div>
-                <div className={`${display === "grid" ? display : "hidden"}`}>
+                <div className={`${display === "grid" ? display : "hidden"} h-screen`}>
                     {data.length === 0 ? <EmptyComponent/> : <ProductTable data={data}/>}
                 </div>
             </div>
