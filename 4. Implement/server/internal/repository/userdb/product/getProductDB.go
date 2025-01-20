@@ -37,7 +37,7 @@ func GetProductRepo(offset int, limit int) ([]response.ResponseProduct, error) {
 	FROM Product p 
 	LEFT JOIN pictures pic ON p.product_id = pic.product_id
 	LEFT JOIN review r ON r.product_id = p.product_id
-	ORDER BY RANDOM()
+	ORDER BY p.product_name ASC
 	LIMIT %d OFFSET %d`, limit, offset)
 
 	rows, err := db.Query(query)

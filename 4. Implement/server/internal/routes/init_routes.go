@@ -57,12 +57,14 @@ func adminMux() *http.ServeMux {
 
 	// Brand Management
 	mux.HandleFunc("/brands", brandRoute.GetBrandRoutes)
+	mux.HandleFunc("/brand", brandRoute.GetBrandByIdRoute)
 	mux.HandleFunc("/brand/add", brandRoute.AddBrandRoute)
 	mux.HandleFunc("/brand/delete/{brandId}", brandRoute.DeleteBrandRoute)
 	mux.HandleFunc("/brand/update", brandRoute.UpdateBrandRoute)
 
 	// Type Management
 	mux.HandleFunc("/types", typeRoute.GetTypeRoute)
+	mux.HandleFunc("/type", typeRoute.GetTypeByIdRoute)
 	mux.HandleFunc("/type/add", typeRoute.AddTypeRoute)
 	mux.HandleFunc("/type/delete/{typeId}", typeRoute.DeleteTypeRoute)
 	mux.HandleFunc("/type/update", typeRoute.UpdateTypeRoute)
